@@ -1,5 +1,6 @@
 const { Router } = require("express");
 const { validarJWT } = require("../middlewares/validarJWT");
+const validator = require("../validators/user.validator");
 const {
   usuariosGet,
   usuariosPut,
@@ -11,9 +12,9 @@ const router = Router();
 
 router.get("/", validarJWT,usuariosGet);
 
-router.put("/:id", validarJWT,usuariosPut);
+router.put("/:id", validarJWT,validator.userUpdateValidator,usuariosPut);
 
-router.post("/", validarJWT,usuariosPost);
+router.post("/", validarJWT,validator.userCreateValidator,usuariosPost);
 
 router.delete("/:id", validarJWT, usuariosDelete);
 

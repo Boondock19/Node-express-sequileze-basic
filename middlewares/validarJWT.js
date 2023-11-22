@@ -28,7 +28,7 @@ const validarJWT = async (req = request, res = response, next) => {
 
         // Tomamos el ID del payload
         const {id} =  jwt.verify(cleanToken, secretKey);
-        console.log(id);
+
         //Buscamos al usuario en la DB
 
         const foundUser = await User.findOne({
